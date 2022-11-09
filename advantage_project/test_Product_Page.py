@@ -49,7 +49,7 @@ class TestProduct_Page(TestCase):
         self.home_page.hover_icon_cart()
         self.assertEqual(self.home_page.total_products_icon_cart(),self.home_page.total_products_title())
 
-
+    def test_2
     def test_3_remove_product_from_ucon_cart(self):
         # add first product to cart
         self.home_page.click_speakers()
@@ -75,5 +75,32 @@ class TestProduct_Page(TestCase):
         self.product_page.click_add_cart()
         self.home_page.hover_icon_cart()
         self.home_page.click_cart_icon()
-
+        #if have the text "SHOPPING CART", and the element -  that we in correctly page
         self.assertEqual(self.shopping_cart_page.shopping_card_text(),"SHOPPING CART")
+
+    def test_5
+
+
+
+    def test_6
+
+
+
+
+
+    def test_7
+
+
+
+
+    def test_8
+
+
+    def test_9
+
+
+
+    def test_10
+
+
+
