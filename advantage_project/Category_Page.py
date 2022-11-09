@@ -12,4 +12,7 @@ class Category_Page:
     def choose_product(self, number_of_product):
         number_of_product = number_of_product - 1
         self.products_list()[number_of_product].click()
-        
+
+    def name_category(self):
+        return self.driver.find_element(By.CSS_SELECTOR, "[class='select  ng-binding']").text
+

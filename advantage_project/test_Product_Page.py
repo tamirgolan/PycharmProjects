@@ -37,7 +37,7 @@ class TestProduct_Page(TestCase):
         self.home_page.click_mice()
         self.category_page.choose_product(1)
         self.product_page.input_quantity('2')
-        self.product_page.add_cart()
+        self.product_page.click_add_cart()
         #add another product
         self.home_page.click_website_logo()
 
@@ -49,7 +49,10 @@ class TestProduct_Page(TestCase):
         self.home_page.hover_icon_cart()
         self.assertEqual(self.home_page.total_products_icon_cart(),self.home_page.total_products_title())
 
-    def test_2
+    def test_2(self):
+        pass
+
+
     def test_3_remove_product_from_ucon_cart(self):
         # add first product to cart
         self.home_page.click_speakers()
@@ -78,29 +81,94 @@ class TestProduct_Page(TestCase):
         #if have the text "SHOPPING CART", and the element -  that we in correctly page
         self.assertEqual(self.shopping_cart_page.shopping_card_text(),"SHOPPING CART")
 
-    def test_5
+    def test_5(self):
+        pass
+
+
+    def test_6(self):
+        # add first product to cart
+        self.home_page.click_mice()
+        self.category_page.choose_product(2)
+        self.product_page.input_quantity('3')
+        self.product_page.click_add_cart()
+        #add another product
+        self.home_page.click_website_logo()
+        self.home_page.click_speakers()
+        self.category_page.choose_product(1)
+        self.product_page.input_quantity('2')
+        self.product_page.click_add_cart()
+        #go to shopping cart page
+        self.home_page.hover_icon_cart()
+        self.home_page.click_cart_icon()
+        #edit first product (QTY) , from QTY: 2 to QTY: 4
+        self.shopping_cart_page.click_edit_product(1)
+        self.product_page.input_quantity('4')
+        self.product_page.click_add_cart()
+        #edit the QTY of second product, from QTY: 3 TO QTY: 5
+        self.home_page.click_cart_icon()
+        self.shopping_cart_page.click_edit_product(2)
+        self.product_page.input_quantity('5')
+        self.product_page.click_add_cart()
+        self.home_page.click_cart_icon()
+        sleep(5)
+
+        self.shopping_cart_page.details_product_shopping_page()
+
+#לעשות משתנים ולהשוות לפני השינוי ואחרי כל פעם אחד בנפרד וככה אני אעלה על איפה הבאג!
 
 
 
-    def test_6
 
 
 
 
 
-    def test_7
 
 
 
 
-    def test_8
-
-
-    def test_9
 
 
 
-    def test_10
 
+
+
+
+
+
+    def test_7_back_from_TABLET(self):
+        # add product to cart from tablet category
+        self.home_page.click_tablets()
+        self.category_page.choose_product(1)
+        self.product_page.click_add_cart()
+        #back to tablet category
+        self.driver.back()
+        #check if the category tablet was open
+        self.assertEqual(self.category_page.name_category(),"TABLETS")
+        #back to home page
+        self.driver.back()
+        #check if the home page was open
+        #self.wait.until(EC.visibility_of_element_located((self.home_page.line_menu()[0])))
+        #sleep(2)
+        self.assertEqual(self.home_page.contact_us_text(),"CONTACT US")
+
+
+
+
+
+
+
+
+
+
+    def test_8(self):
+        pass
+
+    def test_9(self):
+        pass
+
+
+    def test_10(self):
+        pass
 
 

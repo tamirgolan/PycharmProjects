@@ -132,3 +132,11 @@ class Home_Page:
     def products_details_in_icon_cart(self):
         self.products_details = self.driver.find_element(By.CSS_SELECTOR, "table>tbody>tr")
         return self.products_details
+
+    def contact_us_text(self):
+        self.contact_text = self.driver.find_elements(By.CSS_SELECTOR, "[class='menu navLinks roboto-regular ng-scope']")
+        return self.contact_text[0].text
+
+    def line_menu(self):
+        self.line = self.driver.find_elements(By.CSS_SELECTOR, "[class='menu navLinks roboto-regular ng-scope']")
+

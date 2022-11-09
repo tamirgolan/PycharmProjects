@@ -20,10 +20,11 @@ driver = webdriver.Chrome(service=service_chrome)
 driver.get("https://advantageonlineshopping.com/#/category/Speakers/4")
 
 driver.maximize_window()
-driver.implicitly_wait(10)
+driver.implicitly_wait(20)
 home=Home_Page(driver)
 
-sleep(2)
+
+
 a = driver.find_elements(By.CSS_SELECTOR, "[class='productName ng-binding']")
 a[1].click()
 
@@ -78,7 +79,6 @@ list_products_details = []
   #  print(list_products[i].text)
 
 
-print(list_products.text)
 
     #list_products_details.append(list_products[i].text)
     #print(list_products_details)
@@ -109,12 +109,6 @@ print(home.total_products_title())
 print(home.total_products_icon_cart())
 
 
-
-home.hover_icon_cart()
-
-home.click_cart_icon()
-x= driver.find_elements(By.CSS_SELECTOR, "[class='select  ng-binding']")
-print(x.t)
 #qu1 = qu.text.replace("QTY:","")
 
 #qu2 = int(qu1)
@@ -127,3 +121,10 @@ print(x.t)
 #print(qu)
 
 # QTY1=qu.tex
+
+home.click_cart_icon()
+sleep(2)
+
+list = driver.find_element(By.CSS_SELECTOR, "tbody>tr>td>label")
+print("!!!!")
+print(list.text)
