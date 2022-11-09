@@ -86,7 +86,7 @@ class TestProduct_Page(TestCase):
 
 
     def test_6(self):
-        # add first product to cart
+        # add product to cart
         self.home_page.click_mice()
         self.category_page.choose_product(2)
         self.product_page.input_quantity('3')
@@ -102,19 +102,29 @@ class TestProduct_Page(TestCase):
         self.home_page.click_cart_icon()
         #edit first product (QTY) , from QTY: 2 to QTY: 4
         self.shopping_cart_page.click_edit_product(1)
-        self.product_page.input_quantity('4')
+        qty_product1 = '4'
+        self.product_page.input_quantity(qty_product1)
         self.product_page.click_add_cart()
+        qty_product1 = int(qty_product1)
+        #test to the first product. the qty need to be equal to the edit change
+        self.assertEqual(qty_product1,self.shopping_cart_page.qty_first_product_shipping_page())
+
         #edit the QTY of second product, from QTY: 3 TO QTY: 5
+        qty_product2= '5'
         self.home_page.click_cart_icon()
         self.shopping_cart_page.click_edit_product(2)
-        self.product_page.input_quantity('5')
+        self.product_page.input_quantity(qty_product2)
         self.product_page.click_add_cart()
         self.home_page.click_cart_icon()
-        sleep(5)
+        qty_product2 = int(qty_product2)
 
-        self.shopping_cart_page.details_product_shopping_page()
+        #test to the second product. the qty need to be equal to the edit change.
+        self.assertEqual(qty_product2,self.shopping_cart_page.qty_second_product_shipping_page())
+        #end test to first product. the qty need to stay equal after changes in second product
+        self.assertEqual(qty_product1,self.shopping_cart_page.qty_first_product_shipping_page())
+######## have bug : When you edit the quantity of the second product, it changes the quantity for the first product  ######
 
-#לעשות משתנים ולהשוות לפני השינוי ואחרי כל פעם אחד בנפרד וככה אני אעלה על איפה הבאג!
+
 
 
 

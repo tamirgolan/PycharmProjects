@@ -9,6 +9,7 @@ from time import sleep
 from selenium.webdriver.common.action_chains import ActionChains
 from Home_Page import Home_Page
 from Product_Page import Product_Page
+from ShoppingCard_Page import ShoppingCard_Page
 
 
 service_chrome = Service(r"C:\selenium1\chromedriver.exe")
@@ -125,6 +126,33 @@ print(home.total_products_icon_cart())
 home.click_cart_icon()
 sleep(2)
 
-list = driver.find_element(By.CSS_SELECTOR, "tbody>tr>td>label")
+#list = driver.find_elements(By.CSS_SELECTOR, "tbody>tr>td>label")
+#new = []
+#for i in range(len(list)):
+ #       new.append(list[i].text)
+#print(new)
+#ptint(new[])
+
+list = driver.find_elements(By.CSS_SELECTOR,"html>body>div>section>article>div>table>tbody>tr>td>label")
+print(list[4].text)
+print(list[10].text)
+
+
+
+
+
 print("!!!!")
-print(list.text)
+
+shopping_cart = ShoppingCard_Page(driver)
+x=shopping_cart.qty_first_product_shipping_page()
+c=shopping_cart.qty_second_product_shipping_page()
+print(x)
+
+print(c)
+
+print("plus")
+print(x+121)
+
+q='333'
+q=int(q)
+print(q+22222)

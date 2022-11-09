@@ -16,8 +16,19 @@ class ShoppingCard_Page:
         num -= 1
         return self.driver.execute_script("arguments[0].click();", self.edit_product()[num])
 
+#QTY of the first product
+    def qty_first_product_shipping_page(self):
+       self.list = self.driver.find_elements(By.CSS_SELECTOR,"html>body>div>section>article>div>table>tbody>tr>td>label")
+       qty= self.list[4].text
+       qty = int(qty)
+       return qty
 
-    def details_product_shopping_page(self):
-       list = self.driver.find_elements(By.CSS_SELECTOR, "tbody>tr>td>label")
-       return list.text
+# QTY of the second product
+    def qty_second_product_shipping_page(self):
+        self.list = self.driver.find_elements(By.CSS_SELECTOR, "html>body>div>section>article>div>table>tbody>tr>td>label")
+        qty = self.list[10].text
+        qty = int(qty)
+        return qty
+
+
 
