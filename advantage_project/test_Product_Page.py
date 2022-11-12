@@ -292,7 +292,10 @@ class TestProduct_Page(TestCase):
         self.assertEqual(self.home_page.contact_us_text(), "CONTACT US")
 
     def test_8_orders_after_payment_safepay_registrtion(self):
+        pass
 
+
+    def test_9_(self):
         # כניסה לעמוד הבית
         self.home_page.click_mice()
 
@@ -315,14 +318,13 @@ class TestProduct_Page(TestCase):
         self.checkout_page.click_registration()
 
         # בחירת שם משתמש
-        self.home_page.regist_un('Amit1239')
+        self.home_page.regist_un('Plvvlb55')
 
         # בחירת סיסמא
-        self.home_page.regist_pass_word('Amit12349')
+        self.home_page.regist_pass_word('Plvvlb55')
 
         # אימות סיסמא
-        self.home_page.confirm_password('Amit12349')
-
+        self.home_page.confirm_password('Plvvlb55')
         # בחירת אימייל
         self.home_page.send_email('thekinsck@gmail.com')
 
@@ -332,6 +334,8 @@ class TestProduct_Page(TestCase):
         # סימון כפתור הרדיו
         self.home_page.create_radio_bottun()
 
+        # sleep(5)
+
         # לחיצה על יצירת חשבון
         self.home_page.click_create_action()
 
@@ -340,6 +344,7 @@ class TestProduct_Page(TestCase):
         # לחיצה על אייקון המשתמש
         self.home_page.user_icon_after_log_in_TG()
 
+        # sleep(7)
         # לחיצה על ההזמנות שלי
         self.checkout_page.user_my_orders_bottun_TG()
 
@@ -355,42 +360,50 @@ class TestProduct_Page(TestCase):
         # עובר לתשלום
         self.checkout_page.click_cahekout_in_cart()
 
-        # ממשיך לבחירת סוג תשלום
         self.checkout_page.click_next()
-        # sleep(6)
-        # גולל למטה
+
+        self.checkout_page.click_radio_creditcard()
+
+        self.checkout_page.cc_num()
+
+        self.checkout_page.send_cc('456778888777')
+        # sleep(7)
+        self.checkout_page.cc_CVVNUM()
+        # sleep(7)
+        self.checkout_page.send_cc_CVV('3454')
+        # sleep(7)
         self.checkout_page.scroll()
 
-        # מזין שם משתמש סייפאי
-        self.checkout_page.safepay_username_send_k("gol346")
+        self.checkout_page.input_card_holder_name("gold tom ")
+        # sleep(7)
 
-        # מזין סיסמא סייפאי
-        self.checkout_page.safepay_password_send_k("'Took26'")
+        self.checkout_page.pay_masten_cccccc()
 
-        # משלם עם סייפאי
-        self.checkout_page.pay_now_btn_SAFEPAY()
+        sleep(9)
 
-        sleep(5)
-
-        # לוחץ על אייקון החשבון
         self.home_page.user_icon_after_log_in_TG()
+
+        # sleep(5)
 
         # הולך למסך ההזמנות
         self.checkout_page.user_my_orders_bottun_TG()
-        # מחפש את הלן לצורך השוואה שומר אותו ומדפיס אותו
-        list_product_after = self.checkout_page.list_table_order()
 
-        # בודק האם הלן הראשון גדול יותר מהלן השני דבר אשר מוודא שאכן נכנסה הזמנה לעמוד ההזמנות
-        self.assertTrue(list_product_before > list_product_after)
+        # sleep(5)
+        self.assertNotEqual(self.checkout_page.no_orders_prove(), "- No orders -")
 
         # הולך לסל הקניות
         self.home_page.click_cart_icon()
 
+        sleep(5)
+
         # לוקח את הטקסט שאומר שהסל ריק ושומר אותו לצורך השוואה והוכה שהסל ריק
         self.checkout_page.empty_cart_prove_txt()
 
-        # משווה בין הלן של אורך הטסקט המעיד על משפט סל הקניות ריק בין פונקציות לן ופונקציה שמביאה את הטסקסט פלוס פונקצית לן עלייה
-        self.assertEqual(self.checkout_page.empty_cart_prove_len(), len(self.checkout_page.empty_cart_prove_txt()))
+        self.assertTrue(self.checkout_page.no_items_in_cart_prove(), "Your shopping cart is empty")
+
+        self.home_page.click_website_logo()
+
+        sleep(5)
 
         # לוחץ על אייקון המשתמש
         self.home_page.user_icon_after_log_in_TG()
@@ -403,9 +416,6 @@ class TestProduct_Page(TestCase):
 
         # מאשר מחיקת משתמש
         self.checkout_page.yes_delete_my_account_tg()
-
-    def test_9(self):
-        pass
 
     def test_10_check_logOut(self):
         self.home_page.click_user_logo()

@@ -221,9 +221,7 @@ class Home_Page:
         self.wait.until(EC.visibility_of_element_located((By.NAME, "i_agree"))).click()
         # self.radioBB=self.wait.untilself.driver.find_element(By.NAME,"i_agree").click()
 
-    # def click_create(self):
-    #     click=self.wait.until(EC.visibility_of_element_located((By.ID,"register_btnundefined")))
-    #     # self.driver.execute_script("arguments[0].click();", click)
+
 
     def click_create_action(self):
         self.driver.find_element(By.ID, "register_btnundefined").click()

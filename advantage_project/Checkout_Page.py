@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 class Checkout_Page:
@@ -149,3 +150,20 @@ class Checkout_Page:
 
     def pay_now_btn_MasterCredit_01(self):
         self.driver.find_element(By.ID, "pay_now_btn_MasterCredit").click()
+
+    def no_orders_prove(self):
+        no_orders_txt = self.driver.find_element(By.CSS_SELECTOR, "[class='roboto-bold ng-binding']")
+        return no_orders_txt.text
+
+    def no_items_in_cart_prove(self):
+        empty_txt = self.driver.find_element(By.CSS_SELECTOR, "[class='roboto-bold ng-scope']")
+        return empty_txt.text
+
+    def pay_masten_cccccc(self):
+        pay_now = self.driver.find_element(By.ID, "pay_now_btn_MasterCredit").click()
+        action = ActionChains(self.driver)
+        action.click(on_element=pay_now)
+        action.perform()
+
+
+
