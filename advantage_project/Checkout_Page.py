@@ -4,11 +4,12 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+
 class Checkout_Page:
 
     def __init__(self, driver: webdriver.chrome):
         self.driver = driver
-        self.wait = WebDriverWait(self.driver,20)
+        self.wait = WebDriverWait(self.driver, 20)
 
     def input_user_name_2(self, txt: str):
         USER = self.wait.until(EC.visibility_of_element_located(
@@ -24,9 +25,8 @@ class Checkout_Page:
         self.login.click()
 
     def click_next(self):
-       # x = self.wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "[id='next_btn'][role='button']")))
+        # x = self.wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "[id='next_btn'][role='button']")))
         self.driver.find_element(By.CSS_SELECTOR, "[id='next_btn'][role='button']").click()
-
 
     def click_radio_creditcard(self):
         self.radio_button = self.driver.find_element(By.NAME, "masterCredit")
@@ -124,7 +124,7 @@ class Checkout_Page:
             (By.CSS_SELECTOR, "[name='safepay_password'][type='password']"))).send_keys(txt)
 
     def pay_now_btn_SAFEPAY(self):
-        x= self.wait.until(EC.visibility_of_element_located((By.ID, "pay_now_btn_SAFEPAY")))
+        x = self.wait.until(EC.visibility_of_element_located((By.ID, "pay_now_btn_SAFEPAY")))
         x.click()
 
     def order_number_text(self):
@@ -149,10 +149,3 @@ class Checkout_Page:
 
     def pay_now_btn_MasterCredit_01(self):
         self.driver.find_element(By.ID, "pay_now_btn_MasterCredit").click()
-
-
-
-
-
-
-
