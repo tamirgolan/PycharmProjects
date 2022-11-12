@@ -146,13 +146,20 @@ print("!!!!")
 shopping_cart = ShoppingCard_Page(driver)
 x=shopping_cart.qty_first_product_shipping_page()
 c=shopping_cart.qty_second_product_shipping_page()
-print(x)
+home.click_cart_icon()
 
-print(c)
 
-print("plus")
-print(x+121)
+list_price=driver.find_elements(By.CSS_SELECTOR,"article>div>table>tbody>tr>td>p")
+price = []
+for i in range(len(list_price)):
+    price.append(list_price[1].text)
+print(price)
 
-q='333'
-q=int(q)
-print(q+22222)
+price = price[1]
+price = price[1:]
+
+price = float(price)
+print(price)
+print(price+10)
+
+sleep(1)
