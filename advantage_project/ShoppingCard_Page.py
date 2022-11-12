@@ -56,3 +56,5 @@ class ShoppingCard_Page:
 
     def click_checkout(self):
         self.checkout = self.driver.find_element(By.ID, "checkOutButton").click()
+
+
