@@ -4,6 +4,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from re import sub
+from selenium.webdriver.support.select import Select
 
 
 class Home_Page:
@@ -11,6 +12,7 @@ class Home_Page:
         self.driver = driver
         self.wait = WebDriverWait(self.driver, 10)
 
+    # find the mice category element
     def mice_category(self):
         return self.driver.find_element(By.ID, 'miceTxt')
 
@@ -18,7 +20,7 @@ class Home_Page:
     def click_mice(self):
         self.mice_category().click()
 
-    # click on tablets category
+    # find the tablets category element
     def tablets_category(self):
         return self.driver.find_element(By.CSS_SELECTOR, "[aria-label=TabletsCategoryTxt][class=shop_now_slider]")
 
@@ -26,6 +28,7 @@ class Home_Page:
     def click_tablets(self):
         self.tablets_category().click()
 
+    # find the speakers element
     def speakers_category(self):
         return self.driver.find_element(By.ID, 'speakersTxt')
 
@@ -33,6 +36,7 @@ class Home_Page:
     def click_speakers(self):
         self.speakers_category().click()
 
+    # find thee laptops element
     def laptops_category(self):
         return self.driver.find_element(By.ID, 'laptopsTxt')
 
@@ -40,6 +44,7 @@ class Home_Page:
     def click_laptops(self):
         self.laptops_category().click()
 
+    # find the headphones category
     def headphons_category(self):
         return self.driver.find_element(By.ID, 'headphonesTxt')
 
@@ -54,33 +59,43 @@ class Home_Page:
     def click_user_logo(self):
         self.user_logo().click()
 
+    # find the username editbox
     def user_name(self):
         return self.driver.find_element(By.NAME, 'username')
 
+    # send keys to username editbox
     def input_user_name(self, user_name: str):
         self.user_name().send_keys(user_name)
 
+    # find the password editbox
     def password(self):
         return self.driver.find_element(By.NAME, 'password')
 
+    # send keys to password editbox
     def input_password(self, password: str):
         self.password().send_keys(password)
 
+    # find the sign in element
     def sign_in(self):
         return self.driver.find_element(By.ID, 'sign_in_btnundefined')
 
+    # click the sign_in element
     def click_sign_in(self):
         self.wait.until(EC.visibility_of_element_located((By.ID, 'sign_in_btnundefined'))).click()
 
+    # find the new_account element
     def create_new_account_button(self):
         return self.driver.find_element(By.CSS_SELECTOR, "[translate=CREATE_NEW_ACCOUNT]")
 
+    # click the new_account element
     def click_create_new_account(self):
         self.create_new_account_button().click()
 
+    # find the cart icon element
     def cart_icon(self):
         return self.driver.find_element(By.CSS_SELECTOR, "[aria-label='ShoppingCart']")
 
+    # click the cart icon element
     def click_cart_icon(self):
         self.cart_icon().click()
 
@@ -89,6 +104,7 @@ class Home_Page:
         x = self.cart_icon()
         return ActionChains(self.driver).move_to_element(x).perform()
 
+    # find the website logo element
     def website_logo(self):
         return self.driver.find_element(By.CLASS_NAME, 'logo')
 
@@ -96,9 +112,11 @@ class Home_Page:
     def click_website_logo(self):
         self.website_logo().click()
 
+    # find the search icon element
     def search_icon(self):
         return self.driver.find_element(By.ID, 'menuSearch')
 
+    # click the search icon element
     def click_search_icon(self):
         self.search_icon().click()
 
@@ -186,57 +204,89 @@ class Home_Page:
         price1 = price = float(sub(r'[^\d.]', '', price))
         return price1
 
-    def user_icon_after_log_in_TG(self):
-        self.wait.until(EC.visibility_of_element_located(
-            (By.CSS_SELECTOR, "[class='hi-user containMiniTitle ng-binding']"))).click()
 
-    def user_log_out_bottun_TG(self):
-        self.log_out_bottun = self.driver.find_elements(By.CSS_SELECTOR, "#menuUserLink>div>label")
-        self.log_out_bottun[2].click()
-
-    def equal_name_after_log_out(self):
-        self.name_on = self.driver.find_element(By.CSS_SELECTOR, "[class='hi-user containMiniTitle ng-binding']")
-        return self.name_on.text
-
-    def regist_un(self, txt):
-        self.userssr = self.driver.find_element(By.NAME, "usernameRegisterPage")
+    # send user_name in the registration page
+    def regist_un(self,txt):
+        self.userssr = self.driver.find_element(By.NAME,"usernameRegisterPage")
         self.userssr.send_keys(txt)
 
-    # def send_user(self, txt):
-    #     self.userssr.send_keys(txt)
-
+    # send password in the registration page
     def regist_pass_word(self, txt: str):
         self.Pass = self.driver.find_element(By.NAME, "passwordRegisterPage")
         self.Pass.send_keys(txt)
 
-    def confirm_password(self, txt: str):
-        self.Pass = self.driver.find_element(By.NAME, "confirm_passwordRegisterPage")
+    # confirm_password the password
+    def confirm_password(self,txt:str):
+        self.Pass = self.driver.find_element(By.NAME,"confirm_passwordRegisterPage")
         self.Pass.send_keys(txt)
 
+    # send email in the registration page
     def send_email(self, txt: str):
         self.email = self.driver.find_element(By.NAME, "emailRegisterPage")
         self.email.send_keys(txt)
 
+    # press the radio bottun in the create account page
     def create_radio_bottun(self):
         self.wait.until(EC.visibility_of_element_located((By.NAME, "i_agree"))).click()
-        # self.radioBB=self.wait.untilself.driver.find_element(By.NAME,"i_agree").click()
 
-
-
+    # click the create account button
     def click_create_action(self):
-        self.driver.find_element(By.ID, "register_btnundefined").click()
+        self.driver.find_element(By.ID,"register_btnundefined").click()
 
-        # self.driver.execute_script("arguments[0].click();", click)
+    # click the user icon after log in
+    def user_icon_after_log_in_TG(self):
+        self.wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR,"[class='hi-user containMiniTitle ng-binding']"))).click()
 
-        def click_create_click(self):
-            click_b = self.driver.find_element(By.ID, "register_btnundefined")
-            click_b.click()
+    # go to my acount page
+    def user_my_acount_bottun_TG(self):
+        self.myorders_bottun = self.driver.find_elements(By.CSS_SELECTOR, "#menuUserLink>div>label")
+        self.myorders_bottun[0].click()
 
-        def click_create_BY_CLASS(self):
-            self.wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "sec-sender-a ng-scope"))).click()
+    # go to edit payment details
+    def acount_edit_details_radio(self):
+        radio=self.driver.find_element(By.CSS_SELECTOR,"[data-ng-click='imgRadioButton = 2']")
+        radio.click()
 
-        # def click_create_2(self):
-        #     create=self.wait.until(EC.visibility_of_element_located((By.ID,"[class='sec-sender-a ng-scope'][id='register_btnundefined']"))).click()
-        #     create.click()
+    # input credit card number
+    def send_cc_keys(self,txt):
+        cc_k=self.driver.find_element(By.ID,"creditCard")
+        cc_k.send_keys(txt)
 
-    # self.create_bottun=self.driver.find_element(By.ID,"register_btnundefined").click()
+    # input cvv number
+    def send_ccv_keys(self, txt):
+        cvv=self.driver.find_element(By.NAME,"cvv_number")
+        cvv.send_keys(txt)
+
+    # input cardholder name
+    def send_c_holder_keys(self, txt):
+        c_holder=self.driver.find_element(By.NAME,"cardholder_name")
+        c_holder.send_keys(txt)
+
+    # input mm expiration date
+    def send_mm(self):
+        mmdrop = Select(self.driver.find_element(By.NAME,"mmListbox"))
+        mmdrop.select_by_visible_text('04')
+
+    # input yyyy expiration date
+    def send_yyyy(self):
+        yyyydrop=Select(self.driver.find_element(By.NAME,"yyyyListbox"))
+        yyyydrop.select_by_visible_text('2027')
+
+    # save changes
+    def save(self):
+        save=self.driver.find_elements(By.ID,"save_btnundefined")
+        save[1].click()
+
+    # go to checkout
+    def click_cahekout_in_cart(self):
+        self.chekgOut=self.driver.find_element(By.ID,"checkOutButton").click()
+
+    # click pay now in master
+    def pay_now_master(self):
+        pay_now=self.driver.find_element(By.ID,"pay_now_btn_MasterCredit")
+        pay_now.click()
+
+    # go to my orders page
+    def user_my_orders_bottun_TG(self):
+        myorders_bottun=self.driver.find_elements(By.CSS_SELECTOR,"#menuUserLink>div>label")
+        myorders_bottun[1].click()
