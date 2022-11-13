@@ -7,12 +7,12 @@ class Category_Page:
     def __init__(self, driver: webdriver.chrome):
         self.driver = driver
 
-    # return list with all products in the category
+    # get product list elements
     def products_list(self):
         return self.driver.find_elements(By.CSS_SELECTOR, "[class='productName ng-binding']")
 
-    # choose a product , with num of product - the left is 1  - "user friendly"
-    def choose_product(self, number_of_product: int):
+    # choose prodoucts from products list
+    def choose_product(self, number_of_product):
         number_of_product = number_of_product - 1
         self.products_list()[number_of_product].click()
 
